@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Binario</title>
+</head>
+<body>
+	<form>
+		<input type="text" id="bin">
+		<input type="button" value="Comvertir" onclick="alert(dec2bin())">
+	</form>
+	
+</body>
+<script type="text/javascript">
+
+	function dec2bin(number) {
+		
+ 		var bin = document.getElementById("bin").value;
+
+ 		while(number > 0) {
+ 		bin = number%2 + bin;
+ 		number = Math.floor(number/2);
+ 		}
+
+ 		return bin;
+	}
+
+</script>
+</html>
