@@ -24,26 +24,18 @@
 		var bin2 = "";
 		var bin3 = "";
  		var number = document.getElementById("bin11").value;
+ 		var numberoct = document.getElementById("bin11").value;
 
  		while(number > 0) {
  		bin = number%2 + bin;
  		number = Math.floor(number/2);
 
- 		bin2 = number%8 + bin2;
- 		number = Math.floor(number/8);
+ 		}
 
- 		bin3 = number%16 + bin3;
- 		number = Math.floor(number/16);
+ 		while (numberoct){
 
- 			if (bin3 == 10) {
- 				bin3 = "A";
- 			}
- 			else {
- 				if (bin3 == 11) {
- 					bin3 = "B";
- 				}
- 			}
-
+ 		bin2 = numberoct%8 + bin2;
+ 		numberoct = Math.floor(numberoct/8);
  		}
 
  		resultado.innerText = bin;
