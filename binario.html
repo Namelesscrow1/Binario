@@ -6,35 +6,49 @@
 </head>
 <body>
 	<form>
-		<input type="text" id="bin">
+		<input type="text" id="bin11">
 		<input type="button" value="Convertir" onclick="dec2bin()">
 	</form>
 	 <div id="resultado"></div>
 	 <div id="resultado2"></div>
+	 <div id="resultado3"></div>
 </body>
 <script type="text/javascript">
 
 	function dec2bin() {
 
+		var resultado3 = document.getElementById("resultado3");
 		var resultado2 = document.getElementById("resultado2");
 		var resultado = document.getElementById("resultado");
 		var bin = "";
 		var bin2 = "";
- 		var number = document.getElementById("bin").value;
+		var bin3 = "";
+ 		var number = document.getElementById("bin11").value;
 
  		while(number > 0) {
  		bin = number%2 + bin;
  		number = Math.floor(number/2);
+
+ 		bin2 = number%8 + bin2;
+ 		number = Math.floor(number/8);
+
+ 		bin3 = number%16 + bin3;
+ 		number = Math.floor(number/16);
+
+ 			if (bin3 == 10) {
+ 				bin3 = "A";
+ 			}
+ 			else {
+ 				if (bin3 == 11) {
+ 					bin3 = "B";
+ 				}
+ 			}
+
  		}
 
  		resultado.innerText = bin;
-
- 		while(number > 0) {
- 		bin2 = number%8 + bin2;
- 		number = Math.floor(number/8);
- 		}
-
  		resultado2.innerText = bin2;
+ 		resultado3.innerText = bin3;
 	}
 
 </script>
