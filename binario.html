@@ -25,6 +25,7 @@
 		var bin3 = "";
  		var number = document.getElementById("bin11").value;
  		var numberoct = document.getElementById("bin11").value;
+ 		var hex_mod = numberoct%16;
 
  		while(number > 0) {
  		bin = number%2 + bin;
@@ -37,6 +38,14 @@
  		bin2 = numberoct%8 + bin2;
  		numberoct = Math.floor(numberoct/8);
  		}
+
+ 		if (hex_mod > 9) {
+ 			bin3 = String.fromCharCode(hex_mod + 55)+bin3;
+ 		}
+ 		else {
+ 			bin3=hex_mod+bin3;
+ 		}
+
 
  		resultado.innerText = bin;
  		resultado2.innerText = bin2;
