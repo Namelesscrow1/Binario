@@ -25,26 +25,32 @@
 		var bin3 = "";
  		var number = document.getElementById("bin11").value;
  		var numberoct = document.getElementById("bin11").value;
- 		var hex_mod = numberoct%16;
+ 		var numberhex = document.getElementById("bin11").value;
+ 		var hex_mod = numberhex%16;
 
- 		while(number > 0) {
- 		bin = number%2 + bin;
- 		number = Math.floor(number/2);
+ 			while(number > 0) {
+ 				bin = number%2 + bin;
+ 				number = Math.floor(number/2);
 
- 		}
+ 			}
 
- 		while (numberoct){
+ 			while (numberoct > 0){
 
- 		bin2 = numberoct%8 + bin2;
- 		numberoct = Math.floor(numberoct/8);
- 		}
+ 				bin2 = numberoct%8 + bin2;
+ 				numberoct = Math.floor(numberoct/8);
+ 			}
 
- 		if (hex_mod > 9) {
- 			bin3 = String.fromCharCode(hex_mod + 55)+bin3;
- 		}
- 		else {
- 			bin3=hex_mod+bin3;
- 		}
+ 			while (numberhex > 0) {
+ 				bin3 = number%16 + bin3;
+ 				numberhex = Math.floor(numberhex/16);
+ 			}
+
+ 			if (hex_mod > 9) {
+ 				bin3 = String.fromCharCode(hex_mod + 55)+bin3;
+ 			}
+ 			else {
+ 				bin3=hex_mod+bin3;
+ 			}
 
 
  		resultado.innerText = bin;
