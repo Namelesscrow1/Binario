@@ -12,6 +12,11 @@
 	 <div id="resultado"></div>
 	 <div id="resultado2"></div>
 	 <div id="resultado3"></div>
+	 <form>
+	 	<input type="text" id="dec11">
+	 	<input type="button" value="Convertir" onclick="bin2dec()">
+	 </form>
+	 <div id="resultado4"></div>
 </body>
 <script type="text/javascript">
 
@@ -28,37 +33,62 @@
  		var numberhex = document.getElementById("bin11").value;
  		
 
- 			while(number > 0) {
- 				bin = number%2 + bin;
- 				number = Math.floor(number/2);
+ 		  while(number > 0) {
+ 		    bin = number%2 + bin;
+ 		    number = Math.floor(number/2);
 
- 			}
+ 		  }
 
- 			while (numberoct > 0){
+ 		  while (numberoct > 0){
 
- 				bin2 = numberoct%8 + bin2;
- 				numberoct = Math.floor(numberoct/8);
- 			}
+ 		    bin2 = numberoct%8 + bin2;
+ 			numberoct = Math.floor(numberoct/8);
+ 		  }
 
- 			while (numberhex > 0) {
+ 		  while (numberhex > 0) {
 
- 				var hex_mod = numberhex%16;
+		    var hex_mod = numberhex%16;
  				
- 				if (hex_mod > 9) {
- 				bin3 = String.fromCharCode(hex_mod + 55 ) + bin3;
- 				}
- 					else {
- 						bin3= hex_mod + bin3;
- 					}
+ 			    if (hex_mod > 9) {
+ 			     bin3 = String.fromCharCode(hex_mod + 55 ) + bin3;
+ 			    }
+ 				  else {
+ 					bin3= hex_mod + bin3;
+ 				  }
 
 
- 				numberhex = Math.floor(numberhex/16);
+ 			numberhex = Math.floor(numberhex/16);
  			}
 
  		resultado.innerText = bin;
  		resultado2.innerText = bin2;
  		resultado3.innerText = bin3;
 	}
+
+
+var bin2dec = function() {
+	var sBinary = this.toString(10);
+	for(var i = 0; i < sBinary.length; i++) {
+		if(sBinary.charAt(i) != "0" && sBinary.charAt(i) != "1")
+			return false;
+	}
+	var bin = sBinary;
+	var dec = 0;
+	var binl = bin.length;
+	var p = 0;
+	var n = 0;
+	while(binl > 0) {
+		p = bin.length - binl;
+		binl--;
+		n = parseInt(bin.substr(binl, 1));
+		dec += n * Math.pow(2, p);
+	}
+return Number(dec);
+
+}
+	var num = document.getElementById("dec11");
+
+
 
 </script>
 </html>
