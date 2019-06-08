@@ -14,7 +14,7 @@
 	 <div id="resultado3"></div>
 	 <form>
 	 	<input type="text" id="dec11">
-	 	<input type="button" value="Convertir" onclick="bin2dec()">
+	 	<input type="button" value="Convertir" onclick="binToDec()">
 	 </form>
 	 <div id="resultado4"></div>
 </body>
@@ -65,30 +65,17 @@
  		resultado3.innerText = bin3;
 	}
 
-
-var bin2dec = function() {
-	var sBinary = this.toString(10);
-	for(var i = 0; i < sBinary.length; i++) {
-		if(sBinary.charAt(i) != "0" && sBinary.charAt(i) != "1")
-			return false;
-	}
-	var bin = sBinary;
-	var dec = 0;
-	var binl = bin.length;
-	var p = 0;
-	var n = 0;
-	while(binl > 0) {
-		p = bin.length - binl;
-		binl--;
-		n = parseInt(bin.substr(binl, 1));
-		dec += n * Math.pow(2, p);
-	}
-return Number(dec);
-
+function binToDec() {
+	var resultado4 = document.getElementById("resultado4");
+    var dec = 0;
+    bin1= document.getElementById("dec11").value;
+    for ( i = 0; i < bin1.length; i++) {
+        if (bin1[bin1.length - (i + 1)] === '1') {
+            dec += 2 ** i;
+        }
+    }
+    
+    resultado4.innerText = dec;
 }
-	var num = document.getElementById("dec11");
-
-
-
 </script>
 </html>
