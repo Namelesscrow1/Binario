@@ -17,6 +17,7 @@
 	 	<input type="button" value="Convertir" onclick="binToDec()">
 	 </form>
 	 <div id="resultado4"></div>
+	 <div id="resultado5"></div>
 </body>
 <script type="text/javascript">
 
@@ -76,6 +77,17 @@ function binToDec() {
     }
     
     resultado4.innerText = dec;
+
+    var resultado5 = document.getElementById("resultado5");
+    var dec1 = 0;
+    bin2= document.getElementById("dec11").value;
+    for ( i = 0; i < bin2.length; i++) {
+        if (bin2[bin2.length - (i + 1)] === `1`) {
+            dec1 += 8 ** i;
+        }
+    }
+    
+    resultado5.innerText = dec1;
 }
 </script>
 </html>
