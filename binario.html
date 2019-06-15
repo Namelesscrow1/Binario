@@ -71,10 +71,11 @@ function binToDec() {
     var dec = 0;
     bin1= document.getElementById("dec11").value;
     for ( i = 0; i < bin1.length; i++) {
-        if (bin1[bin1.length - (i + 1)] === '1') {
+        if (bin1[bin1.length - (i + 1)] === "1") {
             dec += 2 ** i;
         }
     }
+    
     
     resultado4.innerText = dec;
 
@@ -82,7 +83,7 @@ function binToDec() {
     var dec1 = 0;
     bin2= document.getElementById("dec11").value;
     for ( i = 0; i < bin2.length; i++) {
-        if (bin2[bin2.length - (i + 1)] === `1`) {
+        if (bin2[bin2.length - (i + 1)] === "1") {
             dec1 += 8 ** i;
         }
     }
