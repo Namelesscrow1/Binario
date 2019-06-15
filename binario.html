@@ -18,77 +18,83 @@
 	 </form>
 	 <div id="resultado4"></div>
 	 <div id="resultado5"></div>
+	 <div id="resultado6"></div>
 </body>
 <script type="text/javascript">
+    function dec2bin() {
+        var resultado3 = document.getElementById("resultado3");
+        var resultado2 = document.getElementById("resultado2");
+        var resultado = document.getElementById("resultado");
+        var bin = "";
+        var bin2 = "";
+        var bin3 = "";
+        var number = document.getElementById("bin11").value;
+        var numberoct = document.getElementById("bin11").value;
+        var numberhex = document.getElementById("bin11").value;
 
-	function dec2bin() {
-
-		var resultado3 = document.getElementById("resultado3");
-		var resultado2 = document.getElementById("resultado2");
-		var resultado = document.getElementById("resultado");
-		var bin = "";
-		var bin2 = "";
-		var bin3 = "";
- 		var number = document.getElementById("bin11").value;
- 		var numberoct = document.getElementById("bin11").value;
- 		var numberhex = document.getElementById("bin11").value;
- 		
-
- 		  while(number > 0) {
- 		    bin = number%2 + bin;
- 		    number = Math.floor(number/2);
-
- 		  }
-
- 		  while (numberoct > 0){
-
- 		    bin2 = numberoct%8 + bin2;
- 			numberoct = Math.floor(numberoct/8);
- 		  }
-
- 		  while (numberhex > 0) {
-
-		    var hex_mod = numberhex%16;
- 				
- 			    if (hex_mod > 9) {
- 			     bin3 = String.fromCharCode(hex_mod + 55 ) + bin3;
- 			    }
- 				  else {
- 					bin3= hex_mod + bin3;
- 				  }
-
-
- 			numberhex = Math.floor(numberhex/16);
- 			}
-
- 		resultado.innerText = bin;
- 		resultado2.innerText = bin2;
- 		resultado3.innerText = bin3;
-	}
-
-function binToDec() {
-	var resultado4 = document.getElementById("resultado4");
-    var dec = 0;
-    bin1= document.getElementById("dec11").value;
-    for ( i = 0; i < bin1.length; i++) {
-        if (bin1[bin1.length - (i + 1)] === "1") {
-            dec += 2 ** i;
+        while(number > 0) {
+            bin = number%2 + bin;
+            number = Math.floor(number/2);
         }
-    }
-    
-    
-    resultado4.innerText = dec;
-
-    var resultado5 = document.getElementById("resultado5");
-    var dec1 = 0;
-    bin2= document.getElementById("dec11").value;
-    for ( i = 0; i < bin2.length; i++) {
-        if (bin2[bin2.length - (i + 1)] === "1") {
-            dec1 += 8 ** i;
+        while (numberoct > 0){
+            bin2 = numberoct%8 + bin2;
+            numberoct = Math.floor(numberoct/8);
         }
+        while (numberhex > 0) {
+            var hex_mod = numberhex%16;
+
+            if (hex_mod > 9) {
+                bin3 = String.fromCharCode(hex_mod + 55 ) + bin3;
+            } else {
+                bin3= hex_mod + bin3;
+            }
+            numberhex = Math.floor(numberhex/16);
+        }
+        resultado.innerText = bin;
+        resultado2.innerText = bin2;
+        resultado3.innerText = bin3;
     }
-    
-    resultado5.innerText = dec1;
-}
+
+    function binToDec() {
+        var resultado4 = document.getElementById("resultado4");
+        var resultado5 = document.getElementById("resultado5");
+        var resultado6 = document.getElementById("resultado6");
+        var bin1 = document.getElementById("dec11").value;
+        var dec = 0;
+        var dec1 = "";
+        var dec2 = "";
+
+        // bin a dec
+        for ( i = 0; i < bin1.length; i++) {
+            if (bin1[bin1.length - (i + 1)] === "1") {
+                dec += 2 ** i;
+            }
+        }
+        resultado4.innerText = dec;
+        
+        var numberoct = dec;
+        var numberhex = dec;
+        
+        // dec a oct (igual que en el método dec2bin())
+        while (numberoct > 0){
+            dec1 = numberoct%8 + dec1;
+            numberoct = Math.floor(numberoct/8);
+        }
+        resultado5.innerText = dec1;
+        
+        // dec a hex (igual que en el método dec2bin())
+        while (numberhex > 0) {
+            var hex_mod = numberhex%16;
+            
+            if (hex_mod > 9) {
+                dec2 = String.fromCharCode(hex_mod + 55 ) + dec2;
+            } else {
+                dec2= hex_mod + dec2;
+            }
+            numberhex = Math.floor(numberhex/16);
+        }
+        
+        resultado6.innerText = dec2;
+    }
 </script>
 </html>
