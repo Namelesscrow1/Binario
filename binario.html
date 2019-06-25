@@ -9,6 +9,7 @@
 		<input type="text" id="bin11">
 		<input type="button" value="Convertir" onclick="dec2bin()">
 	</form>
+	 ç
 	 <div id="resultado"></div>
 	 <div id="resultado2"></div>
 	 <div id="resultado3"></div>
@@ -32,28 +33,29 @@
         var numberoct = document.getElementById("bin11").value;
         var numberhex = document.getElementById("bin11").value;
 
-        while(number > 0) {
-            bin = number%2 + bin;
-            number = Math.floor(number/2);
-        }
-        while (numberoct > 0){
-            bin2 = numberoct%8 + bin2;
-            numberoct = Math.floor(numberoct/8);
-        }
-        while (numberhex > 0) {
-            var hex_mod = numberhex%16;
+		function dec2bin(number, base) {
+		  var bin = "";
 
-            if (hex_mod > 9) {
-                bin3 = String.fromCharCode(hex_mod + 55 ) + bin3;
+		  while(number > 0) {
+		  bin = number%base + bin;
+		  number = Math.floor(number/base);
+
+		  	var hex_mod = number%16;
+
+		  if (hex_mod > 9) {
+                bin = String.fromCharCode(hex_mod + 55 ) + bin;
             } else {
-                bin3= hex_mod + bin3;
+                bin= hex_mod + bin;
             }
-            numberhex = Math.floor(numberhex/16);
+            number = Math.floor(number/base);
+		  }
+
         }
-        resultado.innerText = bin;
-        resultado2.innerText = bin2;
-        resultado3.innerText = bin3;
-    }
+
+		 // return bin;
+		
+
+console.log(dec2bin(100,16));
 
     function binToDec() {
         var resultado4 = document.getElementById("resultado4");
@@ -98,3 +100,4 @@
     }
 </script>
 </html>
+
