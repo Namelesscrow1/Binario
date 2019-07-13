@@ -7,55 +7,45 @@
 <body>
 	<form>
 		<input type="text" id="bin11">
-		<input type="button" value="Convertir" onclick="dec2bin()">
+        <input type="button" value="Convertir" onclick="convertir_dec()">
 	</form>
-	 ç
-	 <div id="resultado"></div>
-	 <div id="resultado2"></div>
-	 <div id="resultado3"></div>
-	 <form>
+
+	<div id="resultado"></div>
+	<div id="resultado2"></div>
+	<div id="resultado3"></div>
+	<form>
 	 	<input type="text" id="dec11">
 	 	<input type="button" value="Convertir" onclick="binToDec()">
-	 </form>
-	 <div id="resultado4"></div>
-	 <div id="resultado5"></div>
-	 <div id="resultado6"></div>
+	</form>
+	<div id="resultado4"></div>
+	<div id="resultado5"></div>
+	<div id="resultado6"></div>
 </body>
 <script type="text/javascript">
-    function dec2bin() {
+    function convertir_dec() {
         var resultado3 = document.getElementById("resultado3");
         var resultado2 = document.getElementById("resultado2");
         var resultado = document.getElementById("resultado");
-        var bin = "";
-        var bin2 = "";
-        var bin3 = "";
-        var number = document.getElementById("bin11").value;
-        var numberoct = document.getElementById("bin11").value;
-        var numberhex = document.getElementById("bin11").value;
 
-		function dec2bin(number, base) {
-		  var bin = "";
+        var dec = document.getElementById("bin11").value;
+        resultado.innerText = dec2base(dec, 2);
+        resultado2.innerText = dec2base(dec, 8);
+        resultado3.innerText = dec2base(dec, 16);
+    }
 
-		  while(number > 0) {
-		  bin = number%base + bin;
-		  number = Math.floor(number/base);
-
-		  	var hex_mod = number%16;
-
-		  if (hex_mod > 9) {
-                bin = String.fromCharCode(hex_mod + 55 ) + bin;
+    function dec2base(number, base) {
+        var resultado = "";
+        while(number > 0) {
+            var base_mod = number%base;
+            if (base_mod > 9) {
+                resultado = String.fromCharCode(base_mod + 55 ) + bin;
             } else {
-                bin= hex_mod + bin;
+                resultado= base_mod + resultado;
             }
             number = Math.floor(number/base);
-		  }
-
         }
-
-		 // return bin;
-		
-
-console.log(dec2bin(100,16));
+        return resultado;
+    }
 
     function binToDec() {
         var resultado4 = document.getElementById("resultado4");
@@ -65,7 +55,6 @@ console.log(dec2bin(100,16));
         var dec = 0;
         var dec1 = "";
         var dec2 = "";
-
         // bin a dec
         for ( i = 0; i < bin1.length; i++) {
             if (bin1[bin1.length - (i + 1)] === "1") {
@@ -100,4 +89,3 @@ console.log(dec2bin(100,16));
     }
 </script>
 </html>
-
