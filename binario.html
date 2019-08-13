@@ -15,30 +15,29 @@
 	<div id="resultado3"></div>
 	<form>
 	 	<input type="text" id="dec11">
-	 	<input type="button" value="Convertir" onclick="binToDec()">
+	 	<input type="button" value="Convertir" onclick="convertir_bin()">
 	</form>
 	<div id="resultado4"></div>
 	<div id="resultado5"></div>
 	<div id="resultado6"></div>
 </body>
 <script type="text/javascript">
+
     function convertir_dec() {
         var resultado3 = document.getElementById("resultado3");
         var resultado2 = document.getElementById("resultado2");
         var resultado = document.getElementById("resultado");
-
         var dec = document.getElementById("bin11").value;
         resultado.innerText = dec2base(dec, 2);
         resultado2.innerText = dec2base(dec, 8);
         resultado3.innerText = dec2base(dec, 16);
     }
-
     function dec2base(number, base) {
         var resultado = "";
         while(number > 0) {
             var base_mod = number%base;
             if (base_mod > 9) {
-                resultado = String.fromCharCode(base_mod + 55 ) + bin;
+                resultado = String.fromCharCode(base_mod + 55 ) + number;
             } else {
                 resultado= base_mod + resultado;
             }
@@ -46,46 +45,43 @@
         }
         return resultado;
     }
-
-    function binToDec() {
+    function convertir_bin() {
         var resultado4 = document.getElementById("resultado4");
         var resultado5 = document.getElementById("resultado5");
         var resultado6 = document.getElementById("resultado6");
         var bin1 = document.getElementById("dec11").value;
-        var dec = 0;
-        var dec1 = "";
-        var dec2 = "";
-        // bin a dec
-        for ( i = 0; i < bin1.length; i++) {
-            if (bin1[bin1.length - (i + 1)] === "1") {
+        resultado4.innerText = binToDec(bin1);
+        resultado5.innerText = bin2base(bin1, 8);
+        resultado6.innerText = bin2base(bin1, 16);
+    }
+
+
+    	function bin2base(binary, base) {
+			var resultado = "";
+        	while(binary > 9) {
+            var base = binary%base;
+              if (base > 9) {
+                resultado = String.fromCharCode(base + 55 ) + binary;
+              } else {
+                  resultado= base + resultado;
+                }
+               binary = Math.floor(binary/base);
+        	}
+           return resultado;	
+    	}
+        
+        ///////////////////////////////////////////////////////////////
+        
+       function bintodec(bin){
+       	
+        for ( i = 0; i < bin.length; i++) {
+            if (bin[bin.length - (i + 1)] === "1") {
                 dec += 2 ** i;
             }
+            return bin;
         }
-        resultado4.innerText = dec;
-        
-        var numberoct = dec;
-        var numberhex = dec;
-        
-        // dec a oct (igual que en el método dec2bin())
-        while (numberoct > 0){
-            dec1 = numberoct%8 + dec1;
-            numberoct = Math.floor(numberoct/8);
-        }
-        resultado5.innerText = dec1;
-        
-        // dec a hex (igual que en el método dec2bin())
-        while (numberhex > 0) {
-            var hex_mod = numberhex%16;
-            
-            if (hex_mod > 9) {
-                dec2 = String.fromCharCode(hex_mod + 55 ) + dec2;
-            } else {
-                dec2= hex_mod + dec2;
-            }
-            numberhex = Math.floor(numberhex/16);
-        }
-        
-        resultado6.innerText = dec2;
-    }
+       }
+
+    
 </script>
 </html>
